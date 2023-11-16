@@ -1,7 +1,7 @@
 import pandas as pd
 
 def load_data():
-  data = pd.read_csv(Weather_Data.csv)
+  data = pd.read_csv(weather_data.csv)
   print(data.head())
   return data
 
