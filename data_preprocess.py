@@ -1,7 +1,11 @@
-import pandas as pd
 from data_extraction import analyze_data
 
-def process_data():
+def preprocess_data():
   data, categorical_features, numerical_features = analyze_data()
-  data['Date'] = pd.to_datetime(data['Date'], format="%d-%m-%y")
-  
+  data.drop['Date', 'WindGustDir', 'WindDir9am', 'WindDir3am']
+  print(data.head())
+  categorical_features = data.select_dtypes("object").columns
+  numerical_features = data.select_dtypes("number").columns
+  return data, categorical_features, numerical_features
+
+preprocess_data()
