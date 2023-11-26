@@ -22,21 +22,21 @@ def visualize_data():
     fig.update_layout(showlegend=False)
     fig.update_xaxes(title_text=numerical_feature, showgrid=False)
     fig.update_yaxes(title_text="Probability Density", showgrid=False)
-    #fig.show()
+    fig.show()
     
   # Create boxplots for each numerical feature
   for numerical_feature in numerical_features:
     fig = px.box(data, y=numerical_feature)
     fig.update_xaxes(showgrid=False)
     fig.update_yaxes(showgrid=False)
-    #fig.show()
+    fig.show()
 
   # Create histogram for each categorical feature
   for categorical_feature in categorical_features:
     fig = px.histogram(data, x=categorical_feature)
     fig.update_xaxes(showgrid=False)
     fig.update_yaxes(showgrid=False)
-    #fig.show()
+    fig.show()
 
   return data
 
