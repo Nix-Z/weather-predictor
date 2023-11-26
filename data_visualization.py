@@ -12,5 +12,6 @@ def visualize_data():
   data, categorical_features, numerical_features = preprocess_data()
 
   for numerical_feature in numerical_features:
+    fig = ff.create_distplot( , show_rug=False)
 
   for categorical_feature in categorical_features:
