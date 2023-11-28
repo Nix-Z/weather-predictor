@@ -19,6 +19,8 @@ def engineer_features():
     scaled_data.replace({'RainToday': {'No':0, 'Yes':1}}, inplace=True)
     print(scaled_data.head())
 
+    data_balanced.to_csv('weather_predictor_cleansed_data.csv', index=False)
+
     return scaled_data
 
 engineer_features()
