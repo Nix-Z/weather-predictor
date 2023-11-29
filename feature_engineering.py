@@ -19,8 +19,19 @@ def engineer_features():
     scaled_data.replace({'RainToday': {'No':0, 'Yes':1}}, inplace=True)
     print(scaled_data.head())
 
-    scaled_data.to_csv('weather_predictor_cleansed_data.csv', index=False)
+    # Balance data --> RainToday
+    data = scaled_data
+    
+    data_majority = data[data['RainToday']==0]
+    data_minority = data[data['RainToday']==1]
+    data_minority_upsampled = resample(data_minority, replace=True, n_samples=2422, random_state=1)
+    data_upsampled = pd.concat([data_majority, data_minority_upsampled], axis=0)
 
-    return scaled_data
+    print(data_upsampled['RainToday'].groupby(data_upsampled['RainToday']).count())
+    print(data_upsampled.head())
+
+    data_upsampled.to_csv('weather_predictor_cleansed_data.csv', index=False)
+    
+    return data_upsampled
 
 engineer_features()
