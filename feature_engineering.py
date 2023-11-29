@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler
+from sklearn.utils import resample
 from data_visualization import visualize_data
 
 def engineer_features():
