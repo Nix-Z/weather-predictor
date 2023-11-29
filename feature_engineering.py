@@ -7,6 +7,19 @@ from data_visualization import visualize_data
 def engineer_features():
     data = visualize_data()
 
+    # Remove Outliers
+    outliers = ['Temp9am', 'Temp3pm', 'MaxTemp', 'Evaporation', 'WindGustSpeed', 'WindSpeed9am',
+                'WindSpeed3pm', 'Humidity9am', 'Humidity3pm', 'Pressure9am', 'Pressure3pm']
+    for feature in outliers:
+        percentile_25 = data[feature].quantile(0.25)
+        percentile_75 = data[feature].quantile(0.75)
+        iqr = percentile_75 - percentile_25
+        upper_limit = percentile_75 + 1.5 * iqr
+        lower_limit = percentile_25 - 1.5 * iqr
+        data[feature] = np.where(data[feature] > upper_limit, upper_limit,
+                                 np.where(data[feature] < lower_limit, lower_limit, data[feature]))
+        data[feature] = data[feature].astype(int)
+
     # Balance the Data
     new_data = data.drop(columns=['RainToday'])
     scaler = StandardScaler()
