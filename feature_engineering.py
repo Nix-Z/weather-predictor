@@ -31,6 +31,9 @@ def engineer_features():
 
     # Convert categorical feature values to binary values
     scaled_data.replace({'RainToday': {'No':0, 'Yes':1}}, inplace=True)
+    scaled_data.replace({'WindGustDir': {'W':0, 'NNW':1, 'WNW':2, 'ENE':3, 'NNE':4, 'NW':5, 'SSE'6, 'NE':7, 'ESE':8, 'WSW':9, 'SE':10, 'SW':11, 'N':12, 'E':13, 'SSW':14, 'S':15}}, inplace=True)
+    scaled_data.replace({'WindDir9am': {'W':0, 'NNW':1, 'WNW':2, 'ENE':3, 'NNE':4, 'NW':5, 'SSE'6, 'NE':7, 'ESE':8, 'WSW':9, 'SE':10, 'SW':11, 'N':12, 'E':13, 'SSW':14, 'S':15}}, inplace=True)
+    scaled_data.replace({'WindDir3pm': {'W':0, 'NNW':1, 'WNW':2, 'ENE':3, 'NNE':4, 'NW':5, 'SSE'6, 'NE':7, 'ESE':8, 'WSW':9, 'SE':10, 'SW':11, 'N':12, 'E':13, 'SSW':14, 'S':15}}, inplace=True)
     print(scaled_data.head())
 
     # Balance data --> RainToday
