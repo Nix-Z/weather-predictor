@@ -21,19 +21,22 @@ def engineer_features():
         data[feature] = data[feature].astype(int)
 
     # Balance the Data
-    new_data = data.drop(columns=['RainToday', 'WindGustDir', 'WindDir9am', 'WindDir3pm'])
+    new_data = data.drop(columns=['RainToday'])
+    # new_data = data.drop(columns=['RainToday', 'WindGustDir', 'WindDir9am', 'WindDir3pm'])
     scaler = StandardScaler()
     scaler.fit(new_data)
     scaled_features = scaler.transform(new_data)
     scaled_data = pd.DataFrame(scaled_features,columns=new_data.columns[:])
-    selected_columns = data[['RainToday', 'WindGustDir', 'WindDir9am', 'WindDir3pm']]
-    scaled_data[['RainToday', 'WindGustDir', 'WindDir9am', 'WindDir3pm']] = selected_columns.copy()
+    selected_columns = data[['RainToday']]
+    scaled_data[['RainToday']] = selected_columns.copy()
+    # selected_columns = data[['RainToday', 'WindGustDir', 'WindDir9am', 'WindDir3pm']]
+    # scaled_data[['RainToday', 'WindGustDir', 'WindDir9am', 'WindDir3pm']] = selected_columns.copy()
 
     # Convert categorical feature values to binary values
     scaled_data.replace({'RainToday': {'No':0, 'Yes':1}}, inplace=True)
-    scaled_data.replace({'WindGustDir': {'W':0, 'NNW':1, 'WNW':2, 'ENE':3, 'NNE':4, 'NW':5, 'SSE':6, 'NE':7, 'ESE':8, 'WSW':9, 'SE':10, 'SW':11, 'N':12, 'E':13, 'SSW':14, 'S':15}}, inplace=True)
-    scaled_data.replace({'WindDir9am': {'W':0, 'NNW':1, 'WNW':2, 'ENE':3, 'NNE':4, 'NW':5, 'SSE':6, 'NE':7, 'ESE':8, 'WSW':9, 'SE':10, 'SW':11, 'N':12, 'E':13, 'SSW':14, 'S':15}}, inplace=True)
-    scaled_data.replace({'WindDir3pm': {'W':0, 'NNW':1, 'WNW':2, 'ENE':3, 'NNE':4, 'NW':5, 'SSE':6, 'NE':7, 'ESE':8, 'WSW':9, 'SE':10, 'SW':11, 'N':12, 'E':13, 'SSW':14, 'S':15}}, inplace=True)
+    # scaled_data.replace({'WindGustDir': {'W':0, 'NNW':1, 'WNW':2, 'ENE':3, 'NNE':4, 'NW':5, 'SSE':6, 'NE':7, 'ESE':8, 'WSW':9, 'SE':10, 'SW':11, 'N':12, 'E':13, 'SSW':14, 'S':15}}, inplace=True)
+    # scaled_data.replace({'WindDir9am': {'W':0, 'NNW':1, 'WNW':2, 'ENE':3, 'NNE':4, 'NW':5, 'SSE':6, 'NE':7, 'ESE':8, 'WSW':9, 'SE':10, 'SW':11, 'N':12, 'E':13, 'SSW':14, 'S':15}}, inplace=True)
+    # scaled_data.replace({'WindDir3pm': {'W':0, 'NNW':1, 'WNW':2, 'ENE':3, 'NNE':4, 'NW':5, 'SSE':6, 'NE':7, 'ESE':8, 'WSW':9, 'SE':10, 'SW':11, 'N':12, 'E':13, 'SSW':14, 'S':15}}, inplace=True)
     print(scaled_data.head())
 
     # Balance data --> RainToday
