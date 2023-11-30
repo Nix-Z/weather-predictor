@@ -21,7 +21,7 @@ def engineer_features():
         data[feature] = data[feature].astype(int)
 
     # Balance the Data
-     new_data = data.drop(columns=['RainToday', 'WindGustDir', 'WindDir9am', 'WindDir3pm'])
+    new_data = data.drop(columns=['RainToday', 'WindGustDir', 'WindDir9am', 'WindDir3pm'])
     scaler = StandardScaler()
     scaler.fit(new_data)
     scaled_features = scaler.transform(new_data)
