@@ -19,7 +19,7 @@ pipeline{
         }
         stage("Data Visualization"){
             steps{
-                sh 'python3 data_visualization.py'
+                sh 'python3 datavisualization.py'
             }
         }
         stage("Feature Engineering"){
