@@ -20,6 +20,7 @@ def engineer_features():
                                  np.where(data[feature] < lower_limit, lower_limit, data[feature]))
         data[feature] = data[feature].astype(int)
 
+    """
     # Balance the Data
     new_data = data.drop(columns=['RainToday'])
     scaler = StandardScaler()
@@ -29,6 +30,7 @@ def engineer_features():
     selected_columns = data[['RainToday']]
     scaled_data[['RainToday']] = selected_columns.copy()
     data = scaled_data
+    """
 
     # Convert categorical feature values to binary values
     data.replace({'RainToday': {'No':0, 'Yes':1}}, inplace=True)
