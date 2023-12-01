@@ -8,7 +8,7 @@ def engineer_features():
     data = visualize_data()
 
     # Remove Outliers
-    outliers = ['Temp9am', 'Temp3pm', 'MaxTemp', 'Rainfall', 'Evaporation', 'WindGustSpeed', 'WindSpeed9am',
+    outliers = ['Temp9am', 'Temp3pm', 'MaxTemp', 'Evaporation', 'WindGustSpeed', 'WindSpeed9am',
                 'WindSpeed3pm', 'Humidity9am', 'Humidity3pm', 'Pressure9am', 'Pressure3pm']
     for feature in outliers:
         percentile_25 = data[feature].quantile(0.25)
